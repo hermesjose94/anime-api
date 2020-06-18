@@ -1,0 +1,45 @@
+{
+  "name": "anime-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "DEBUG=app:* nodemon index",
+    "start": "NODE_ENV=production node index",
+    "build": "webpack --mode production"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "^7.10.1",
+    "@babel/register": "^7.10.1",
+    "@hapi/boom": "^9.1.0",
+    "@hapi/joi": "^17.1.1",
+    "bcrypt": "^5.0.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.26.0",
+    "mongodb": "^3.5.9",
+    "ms": "^2.1.2",
+    "passport": "^0.4.1",
+    "passport-http": "^0.3.0",
+    "passport-jwt": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "babel-loader": "^8.1.0",
+    "chalk": "^4.1.0",
+    "eslint": "^7.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
+  }
+}
