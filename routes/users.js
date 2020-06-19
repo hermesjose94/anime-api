@@ -71,7 +71,6 @@ const UsersApi = (app) => {
     validationHandler(createUserSchema),
     async (req, res, next) => {
       const { body: user } = req;
-      console.log(user);
 
       try {
         const userExists = await usersService.getUserEmail(user);

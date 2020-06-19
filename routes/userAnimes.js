@@ -1,13 +1,16 @@
 //Librerias instaladas
 import express from 'express';
-import passport from 'passport';
 //Librerias propias
 import UserAnimesService from '../services/userAnimes';
 import validationHandler from '../utils/middleware/validationHandler';
 import scopesValidationHandler from '../utils/middleware/scopesValidationHandler';
-import { animeIdSchema } from '../utils/schemas/animes';
 import { userIdSchema } from '../utils/schemas/user';
-import { createUserAnimeSchema } from '../utils/schemas/userAnimes';
+import { animeIdSchema } from '../utils/schemas/animes';
+import {
+  userAnimeIdSchema,
+  createUserAnimeSchema,
+  updateUserAnimeSchema,
+} from '../utils/schemas/userAnimes';
 //JWT strategies
 import authMiddleware from '../utils/middleware/authMiddleware';
 
@@ -18,13 +21,35 @@ function userAnimesApi(app) {
   const userAnimesService = new UserAnimesService();
 
   router.get(
-    '/',
+    '/:userId/:animeId',
     authMiddleware,
     scopesValidationHandler(['read:user-animes']),
-    validationHandler(userIdSchema, 'query'),
+    validationHandler(createUserAnimeSchema, 'params'),
     async function (req, res, next) {
-      const { userId } = req.query;
+      const { userId, animeId } = req.params;
+      try {
+        const userAnime = await userAnimesService.getUserAnime({
+          userId,
+          animeId,
+        });
 
+        res.status(200).json({
+          data: userAnime,
+          message: 'user anime retrived',
+        });
+      } catch (error) {
+        next(error);
+      }
+    }
+  );
+
+  router.get(
+    '/:userId',
+    authMiddleware,
+    scopesValidationHandler(['read:user-animes']),
+    validationHandler(userIdSchema, 'params'),
+    async function (req, res, next) {
+      const { userId } = req.params;
       try {
         const userAnimes = await userAnimesService.getUserAnimes({ userId });
 
@@ -60,12 +85,37 @@ function userAnimesApi(app) {
       }
     }
   );
+  router.put(
+    '/:userAnimeId',
+    authMiddleware,
+    scopesValidationHandler(['delete:user-animes']),
+    validationHandler(userAnimeIdSchema, 'params'),
+    validationHandler(updateUserAnimeSchema),
+    async function (req, res, next) {
+      const { userAnimeId } = req.params;
+      const { body: userAnime } = req;
+
+      try {
+        const updatedUserAnimeId = await userAnimesService.updateUserAnime({
+          userAnimeId,
+          userAnime,
+        });
+
+        res.status(200).json({
+          data: updatedUserAnimeId,
+          message: 'user anime updated',
+        });
+      } catch (error) {
+        next(error);
+      }
+    }
+  );
 
   router.delete(
     '/:userAnimeId',
     authMiddleware,
     scopesValidationHandler(['delete:user-animes']),
-    validationHandler(animeIdSchema, 'params'),
+    validationHandler(userAnimeIdSchema, 'params'),
     async function (req, res, next) {
       const { userAnimeId } = req.params;
 
