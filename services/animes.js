@@ -36,8 +36,10 @@ class AnimesService {
     } else if (tags) {
       query = { tags: { $in: tags } };
     }
-
-    const orderBy = JSON.parse(order);
+    var orderBy = {};
+    if (order) {
+      orderBy = JSON.parse(order);
+    }
 
     const animes = await this.mongoDB.getAll(this.collection, query, orderBy);
 
@@ -70,7 +72,16 @@ class AnimesService {
 
   async deleteAnime({ animeId }) {
     const deletedAnimeId = await this.mongoDB.delete(this.collection, animeId);
-    return deletedAnimeId;
+    const query = { animeId };
+    var cascade = false;
+    const userAnimes = await this.mongoDB.getAll('user-animes', query);
+    if (userAnimes.length > 0) {
+      cascade = true;
+      for (const item of userAnimes) {
+        await this.mongoDB.delete('user-animes', item._id);
+      }
+    }
+    return { id: deletedAnimeId, cascade };
   }
 }
 

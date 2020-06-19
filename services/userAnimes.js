@@ -8,9 +8,25 @@ class UserAnimesService {
     this.mongoDB = new MongoLib();
   }
 
-  async getUserAnimes({ userId }) {
-    const query = userId && { userId };
-    const userAnimes = await this.mongoDB.getAll(this.collection, query);
+  async getUserAnimes({ userId, tags, order, week, status }) {
+    var query2 = {};
+    if (tags && status) {
+      query2 = { tags: { $in: tags }, status: Number(status) };
+    } else if (status) {
+      query2 = { status: Number(status) };
+    } else if (tags) {
+      query2 = { tags: { $in: tags } };
+    }
+    const query = userId && { ...query2, userId };
+    var orderBy = {};
+    if (order) {
+      orderBy = JSON.parse(order);
+    }
+    const userAnimes = await this.mongoDB.getAll(
+      this.collection,
+      query,
+      orderBy
+    );
 
     var animes = [];
 
@@ -50,10 +66,11 @@ class UserAnimesService {
       };
       animes.push(result);
     }
-
-    const result = animesService.animesWeek(animes);
-
-    return result;
+    if (week) {
+      const result = animesService.animesWeek(animes);
+      return result;
+    }
+    return animes;
   }
 
   async getUserAnime({ userId, animeId }) {
@@ -99,12 +116,21 @@ class UserAnimesService {
 
   async createUserAnime({ userAnime }) {
     const newFollow = { ...userAnime, episode: 1 };
-    const createdUserAnimeId = await this.mongoDB.create(
-      this.collection,
-      newFollow
-    );
+    const { userId, animeId } = userAnime;
+    const query = { userId, animeId };
 
-    return createdUserAnimeId;
+    const userAnimes = await this.mongoDB.getAll(this.collection, query);
+
+    if (userAnimes.length === 0) {
+      const createdUserAnimeId = await this.mongoDB.create(
+        this.collection,
+        newFollow
+      );
+
+      return createdUserAnimeId;
+    } else {
+      return 'anime has this on your list';
+    }
   }
 
   async updateUserAnime({ userAnimeId, userAnime }) {

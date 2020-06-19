@@ -5,7 +5,6 @@ import UserAnimesService from '../services/userAnimes';
 import validationHandler from '../utils/middleware/validationHandler';
 import scopesValidationHandler from '../utils/middleware/scopesValidationHandler';
 import { userIdSchema } from '../utils/schemas/user';
-import { animeIdSchema } from '../utils/schemas/animes';
 import {
   userAnimeIdSchema,
   createUserAnimeSchema,
@@ -50,8 +49,15 @@ function userAnimesApi(app) {
     validationHandler(userIdSchema, 'params'),
     async function (req, res, next) {
       const { userId } = req.params;
+      const { tags, order, week, status } = req.query;
       try {
-        const userAnimes = await userAnimesService.getUserAnimes({ userId });
+        const userAnimes = await userAnimesService.getUserAnimes({
+          userId,
+          tags,
+          order,
+          week,
+          status,
+        });
 
         res.status(200).json({
           data: userAnimes,
@@ -88,7 +94,7 @@ function userAnimesApi(app) {
   router.put(
     '/:userAnimeId',
     authMiddleware,
-    scopesValidationHandler(['delete:user-animes']),
+    scopesValidationHandler(['update:user-animes']),
     validationHandler(userAnimeIdSchema, 'params'),
     validationHandler(updateUserAnimeSchema),
     async function (req, res, next) {
