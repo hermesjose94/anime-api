@@ -3,9 +3,10 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 //Librerias propias
-// import authApi from './routes/auth';
-// import moviesApi from './routes/movies';
-// import userMoviesApi from './routes/userMovies';
+import authApi from './routes/auth';
+import animesApi from './routes/animes';
+import usersApi from './routes/users';
+import userAnimesApi from './routes/userAnimes';
 import config from './config/index';
 import {
   logErrors,
@@ -32,7 +33,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(config.authCookieSecret));
 
 //Routes
-//...
+authApi(app);
+animesApi(app);
+usersApi(app);
+userAnimesApi(app);
 
 //Catch 404
 app.use(notFoundHandler);

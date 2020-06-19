@@ -92,12 +92,12 @@ const AnimesApi = (app) => {
     validationHandler(updateAnimeSchema),
     async (req, res, next) => {
       const { animeId } = req.params;
-      const { body: movie } = req;
+      const { body: anime } = req;
 
       try {
-        const updatedAnimeId = await moviesService.updateMovie({
+        const updatedAnimeId = await animesService.updateAnime({
           animeId,
-          movie,
+          anime,
         });
         res.status(200).json({
           data: updatedAnimeId,
@@ -118,7 +118,7 @@ const AnimesApi = (app) => {
       const { animeId } = req.params;
 
       try {
-        const deleteAnimeId = await moviesService.deleteMovie({ animeId });
+        const deleteAnimeId = await animesService.deleteAnime({ animeId });
         res.status(200).json({
           data: deleteAnimeId,
           message: 'anime deleted',

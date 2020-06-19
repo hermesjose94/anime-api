@@ -34,16 +34,16 @@ const createAnimeSchema = joi.object({
 });
 
 const updateAnimeSchema = joi.object({
-  name: nameSchema.required(),
-  episode: episodeSchema.required(),
-  date: dateSchema.required(),
-  station: stationSchema.required(),
-  cover: coverSchema.required(),
-  description: descriptionSchema.required(),
-  source: sourceSchema.required(),
-  status: statusSchema.required(),
-  season: seasonSchema.required(),
-  premiere: premiereSchema.required(),
+  name: nameSchema,
+  episode: episodeSchema,
+  date: dateSchema,
+  station: stationSchema,
+  cover: coverSchema,
+  description: descriptionSchema,
+  source: sourceSchema,
+  status: statusSchema,
+  season: seasonSchema,
+  premiere: premiereSchema,
   tags: tagsSchema,
 });
 

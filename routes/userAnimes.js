@@ -9,7 +9,7 @@ import { animeIdSchema } from '../utils/schemas/animes';
 import { userIdSchema } from '../utils/schemas/user';
 import { createUserAnimeSchema } from '../utils/schemas/userAnimes';
 //JWT strategies
-import '../utils/auth/strategies/jwt';
+import authMiddleware from '../utils/middleware/authMiddleware';
 
 function userAnimesApi(app) {
   const router = express.Router();
@@ -19,7 +19,7 @@ function userAnimesApi(app) {
 
   router.get(
     '/',
-    passport.authenticate('jwt', { session: false }),
+    authMiddleware,
     scopesValidationHandler(['read:user-animes']),
     validationHandler(userIdSchema, 'query'),
     async function (req, res, next) {
@@ -40,7 +40,7 @@ function userAnimesApi(app) {
 
   router.post(
     '/',
-    passport.authenticate('jwt', { session: false }),
+    authMiddleware,
     scopesValidationHandler(['create:user-animes']),
     validationHandler(createUserAnimeSchema),
     async function (req, res, next) {
@@ -63,7 +63,7 @@ function userAnimesApi(app) {
 
   router.delete(
     '/:userAnimeId',
-    passport.authenticate('jwt', { session: false }),
+    authMiddleware,
     scopesValidationHandler(['delete:user-animes']),
     validationHandler(animeIdSchema, 'params'),
     async function (req, res, next) {

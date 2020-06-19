@@ -1,6 +1,5 @@
 const animes = [
   {
-    id: 'd2a4a062-d256-41bb-b1b2-9d915af6b75e',
     cover:
       'https://lh3.googleusercontent.com/pw/ACtC-3dfngJxssQiHhMEo8-rhGpFqbGymRre530oyxoIsNnPKC1QszqMzkCPYR1xsptP38w1sE2fJktIkMM7nLJMX8tKWUEd0L3TXiDAzOv9tBVJpN2vpllxilC-64h-ZYgevO2J0kVloc-gfrFyVNC5tPZa=w482-h664-no',
     date: '2020-04-03',
@@ -15,7 +14,6 @@ const animes = [
     status: 'Online',
   },
   {
-    id: '3f951b6d-03fa-4fb0-a7a1-188c0abe9e06',
     cover:
       'https://lh3.googleusercontent.com/pw/ACtC-3fLOJgnQiqYpAdjFtNP_4tNbgQAKOlgZCYErjx1_4_bCivYBoVatCqaqxH6u7WWwwCyK_XzCeBDoKt_BdmP21A_vkKrxMyzd6ku90YbcEoAV5knsVeoCNnl6VxDLzCNcNI9Z0sKHewb-huS6wjSOHAh=w464-h664-no',
     date: '2020-04-03',
@@ -40,7 +38,6 @@ const animes = [
     // ],
   },
   {
-    id: 'c030eed2-dad1-47f4-b660-9cfb7170eadb',
     cover:
       'https://lh3.googleusercontent.com/pw/ACtC-3ciFqzJvDcyV8J6Jxp5GzNcYSaEwaLKOo7qpWVr-EN7ni2Sx37uoE0sGExOhzpxmhbVVrqj4clqS6flZcdFm-gHAChBfpIO163BZptYmCOG71EKBMHupNvDudvGA4U98kXY5K6_YYQe3ZCdB_DWTsnu=w474-h664-no',
     date: '2020-04-04',
@@ -55,7 +52,6 @@ const animes = [
     status: 'Online',
   },
   {
-    id: 'c672ff92-c373-49f4-9c5b-f0151d304361',
     cover:
       'https://lh3.googleusercontent.com/pw/ACtC-3f9H8RX1-m7eOUAPz1HyPLmZuOXaTlf5BqlChWUb82XsHP9soVJx6YxQpnPu3lqcY4HcgvcZ4DnhH90PLFHvbiFrO6CF86w7ZR6Ig9IDzioM7PuTRah5L5gdb9Jm_mMPL_NoTVbd1sLHA287D4SK-pI=w470-h664-no',
     date: '2017-10-03',
@@ -70,7 +66,6 @@ const animes = [
     status: 'Detenido',
   },
   {
-    id: '5ec75811-1001-4612-9743-67296d90071a',
     cover:
       'https://lh3.googleusercontent.com/pw/ACtC-3eHD2QP2N2R9O-BM-qzzIQQgxUxYIZWzcsFGc8MXqv3SwhqH89g4GdgvgdZzK42tux4fOAbDbaQ5Dv8y0hAia-kx6IhfgQtcGPdY2j5P3MyH0MokTX2OnNqvcCWeBwaj4xGHKbLcI6yN0c0e26txbdH=w533-h664-no',
     date: '2020-04-05',
@@ -86,7 +81,6 @@ const animes = [
     status: 'Online',
   },
   {
-    id: '63d718f2-4e37-4090-ad57-dd2cf22393e6',
     cover:
       'https://lh3.googleusercontent.com/pw/ACtC-3fgsc7atFed2o5JgZvik4qHPA13TlyDZVO0UYTghauqcFurg7LPoTlqxYQMJARgMMgk2SP1cUYODJSVQINNY0U_MRS88riFza7LsWgk6CayZsdFQevfn-vGrfE30N4EfrxpWQJ63eGpZFc-7pjIiqfP=w467-h664-no',
     date: '2020-04-02',
@@ -101,7 +95,6 @@ const animes = [
     status: 'Online',
   },
   {
-    id: 'e9093aaa-daf2-4e32-aa6b-c3d79d0d9120',
     cover:
       'https://lh3.googleusercontent.com/pw/ACtC-3fWrUnOlZhMViNnXAR6uYXSaATRMoPMytnmYIdGrMOlu0HPLB_M-hYKPkr0tN15Z1F-sSc8hKvQZdi06Qm8lS6V5WQOqSTDLpBUl8DKwK8NUwNwbHWfz4UD1vWQ5onykZoZmdyFY7TlXxwXjU1xtCFI=w443-h664-no',
     date: '2019-01-12',
@@ -117,7 +110,6 @@ const animes = [
     status: 'Finalizado',
   },
   {
-    id: '94f4fa76-fcf9-4aa3-a18f-f54bb7d462bc',
     cover:
       'https://lh3.googleusercontent.com/pw/ACtC-3ePycOVVvMsg7HKR-EA2qd5dznE4OrxWC3If_CEg1EN9MRTstwAR0lT2fH4E5jyOYrOlLNuCYVIbykuNk8PyS_7LobPreJXMdF6yig2S1zwpiajikozuetIYulN8gVLr47tfM94xSUP-O-ORcN1MAJH=w450-h628-no',
     date: '2020-04-11',
@@ -133,7 +125,6 @@ const animes = [
     status: 'Online',
   },
   {
-    id: '9a2e5834-4eb5-4083-8c21-87fdfc0b3b52',
     cover:
       'https://lh3.googleusercontent.com/pw/ACtC-3fZf_PUqOdEp-aN0wr9ByaQr4ftFXeLGHXMUHgDCqaKamqJh7x3Iw9QjuitS95yev8Tanp30xtJylAUcvdEo_tyJ66yz8iSh1IU0vMxYxdRybf6c2WFvQ29EabN61M2P5QLAqZiBUWbiA0myYk5x70P=w460-h664-no',
     date: '2020-04-02',
@@ -148,7 +139,6 @@ const animes = [
     status: 'Online',
   },
   {
-    id: '11fff70c-c312-4791-b8b4-1a0665edd79e',
     cover:
       'https://lh3.googleusercontent.com/pw/ACtC-3eGt0VziscQMKxVMyp-41kirlqqqvZRjLILQ8-TKkkxMGi6RJ76-NLQdOK1vDMqsyhOJ4xOhWbBFu1AJYcnJRRzIcLJewKvIpiSp3WwoTRbsMGWQB481uHLofVlqNN1VW9U1UcPJ28fpSzcqPZxiQAE=w508-h664-no',
     date: '2020-04-01',
@@ -163,7 +153,6 @@ const animes = [
     status: 'Online',
   },
   {
-    id: '12fff79c-c312-4791-b8b4-1a0665edd77e',
     cover:
       'https://lh3.googleusercontent.com/pw/ACtC-3f8PQExJPUX5Py_iJwTcBP-qJ-uHaUkiNUDys79oj9Rdl7ODjjVerz-zhqc5OfceaMVHyTP_g73hpuF6w1vrlnEQX-iduIdpVkIsz6RoBNIimd9cmA52awC7csUiS1U9zLSIYGsiTOAbqnX5jwtrvjn=w960-h664-no',
     date: '2020-04-03',
@@ -178,7 +167,6 @@ const animes = [
     status: 'Online',
   },
   {
-    id: '9a2e7834-4eb5-4083-8c21-87fdfc0b3b55',
     cover:
       'https://lh3.googleusercontent.com/pw/ACtC-3eLIb7IFh_fPK_D8Y1O-8q0CaYibYrAqTruaCsKAclTqfHFB4adc8xXQaNWBn-sKaaMkpTMhPCIHoGXAYjKGabPT3TIp6F9uinpcpaYZZvup9cMwrRJ7l7Qkvf9yuBvAoA-p2KhtnVMAv-KY9OacFxc=w288-h512-no',
     date: '1999-10-20',
@@ -193,7 +181,6 @@ const animes = [
     status: 'Detenido',
   },
   {
-    id: 'c698ff92-c373-46f4-9c5b-f0151d304399',
     cover:
       'https://lh3.googleusercontent.com/pw/ACtC-3fA4CDevEdyKXLg3zOt_wLuz8mrnTenswflQEIT1xFn8c2bXMMScqLtVQXEJAeKOZOCtP7xakguM4PK4rsoBBdLF5edU8kwU451iO203uHqiPTF1gotO9d7eXE6cFNNlrtUk8VTXN4okIBk3_XOkn74=w468-h665-no',
     date: '2020-04-04',
@@ -210,7 +197,6 @@ const animes = [
     status: 'Online',
   },
   {
-    id: 'd4a4a062-d258-41bb-b1b2-9d919af6b74e',
     cover:
       'https://lh3.googleusercontent.com/pw/ACtC-3c6Gl8QFspHW6S7FzwOY60k_b41k9IXLti7qI4YNDlulumgC_u8Kt1C3c0any15HcyPU6LmTva9jQHJxxQBu5_WgXwFCbQkECtsDcc4qs1oOQqVJnIMKZ0Z1T4uwsdS3tuDJtQ-PlHkkKJdqwuVDgfZ=w843-h664-no',
     date: '2020-01-08',
@@ -225,7 +211,6 @@ const animes = [
     status: 'Online',
   },
   {
-    id: '74a4a062-d258-41bb-b1b2-9d919af6b74e',
     cover:
       'https://lh3.googleusercontent.com/pw/ACtC-3fCS4ayWY1aksm6L1WFXKWGSps-G7eliT2B_sZ6XzOIaN1IqdtS32J1Olid52e8y_rFUO7AnYs2p3ybO7fYR64JRDDBM9jo1ky5rs8s8VGRpekV5yJY7j-Sp-OGZTe7zfDtoH02H_rrmgBraSex_DKo=w1030-h664-no',
     date: '2020-04-05',
@@ -240,7 +225,6 @@ const animes = [
     status: 'Online',
   },
   {
-    id: 'b4a4a062-d258-41bb-b1b2-9d919af6b74e',
     cover:
       'https://lh3.googleusercontent.com/pw/ACtC-3dlAN_pCF6zKI1rWJXAK8sTTI6hb9S7YoqbbsXq6Wf9i4Bxyya9Jco3aSl_xG81Cgk-KDwGePZjpETTZA7luo-cNc8tL1S-fIVTnD0D459nst3hp4IUHWDpreBzfn24Xte48q9syGglf2hj7j3govkZ=w470-h664-no',
     date: '2020-04-06',
@@ -255,7 +239,6 @@ const animes = [
     status: 'Online',
   },
   {
-    id: 'b4a4a062-d258-41bb-b1b2-9d919af6b74e',
     cover:
       'https://lh3.googleusercontent.com/pw/ACtC-3enpTVY03RnaHcHVMHiUbCb7ZJkn78mFhGCJjGFP13uJ0XCmNNX2lx-m6DFVIVJHralC_ZZM6_gzTrrG0N2dYVyt51DPN1uax_m2lh8WjyYA4heH_hCsG-SwTBsK3FcP4wGfpnVTxzJSBF-xdTICCVr=w1328-h664-no',
     date: '2017-07-07',
@@ -270,7 +253,6 @@ const animes = [
     status: 'Finalizado',
   },
   {
-    id: '84a4a062-d258-41bb-b1b2-9d919af6b74e',
     cover:
       'https://lh3.googleusercontent.com/pw/ACtC-3eBpYvLbVehAdrlCZXeI4kF8DcEbmIbHV1RaFc8MbQ4i4UcEavLLcEl0QMq0_4POvhv7j1TjNpVVJIuSwBMgB54uO85OcyAy8IV0JLv-ewpqjNwddS_N1hZXM9bIgVHV991r-n0N7vnddiz_wacYCGg=w1000-h583-no',
     date: '2020-04-04',

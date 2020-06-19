@@ -4,7 +4,7 @@ import passport from 'passport';
 import boom from '@hapi/boom';
 //Librerias propias
 import ApiKeysService from '../services/apiKeys';
-import UsersService from '../services/user';
+import UsersService from '../services/users';
 import validationHandler from '../utils/middleware/validationHandler';
 import { createUserSchema } from '../utils/schemas/user';
 import config from '../config/index';
@@ -16,6 +16,7 @@ import {
   clearTokens,
   handleResponse,
 } from '../utils/auth/auth';
+
 import '../utils/auth/strategies/basic';
 
 function authApi(app) {
@@ -26,12 +27,6 @@ function authApi(app) {
   const usersService = new UsersService();
 
   router.get('/sign-in', async function (req, res, next) {
-    // const { email, password } = req.body;
-
-    // if (!email || !password) {
-    //   next(boom.unauthorized('User and passwords required.'));
-    // }
-
     passport.authenticate('basic', function (error, user) {
       try {
         if (error || !user) {
@@ -116,7 +111,7 @@ function authApi(app) {
       if (err) {
         return handleResponse(req, res, 401);
       } else {
-        const user = await usersService.getUser({ payload });
+        const user = await usersService.getUserEmail({ payload });
 
         if (!user) {
           return handleResponse(req, res, 401);
@@ -156,7 +151,7 @@ function authApi(app) {
     const { body: user } = req;
 
     try {
-      const userExists = await usersService.getUser(user);
+      const userExists = await usersService.getUserEmail(user);
 
       if (userExists) {
         const { _id: id, name, email } = userExists;
