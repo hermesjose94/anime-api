@@ -28,10 +28,15 @@ const AnimesApi = (app) => {
     scopesValidationHandler(['read:animes']),
     async (req, res, next) => {
       cacheResponse(res, FIVE_MINUTES_IN_SECONDS);
-      const { tags } = req.query;
+      const { tags, order, week, status } = req.query;
 
       try {
-        const animes = await animesService.getAnimes({ tags });
+        const animes = await animesService.getAnimes({
+          tags,
+          order,
+          week,
+          status,
+        });
 
         res.status(200).json({
           data: animes,

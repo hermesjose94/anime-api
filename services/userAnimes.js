@@ -51,23 +51,9 @@ class UserAnimesService {
       animes.push(result);
     }
 
-    let week = {};
-    if (animes.length > 0) {
-      for (const anime of animes) {
-        if (anime.status !== 'Finalizado') {
-          if (!week.hasOwnProperty(anime.premiere)) {
-            week[anime.premiere] = [];
-          }
-          week[anime.premiere].push(anime);
-        } else {
-          if (!week.hasOwnProperty('Finalizados')) {
-            week['Finalizados'] = [];
-          }
-          week['Finalizados'].push(anime);
-        }
-      }
-    }
-    return week;
+    const result = animesService.animesWeek(animes);
+
+    return result;
   }
 
   async getUserAnime({ userId, animeId }) {

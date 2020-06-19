@@ -1,4 +1,5 @@
 import MongoLib from '../lib/mongo';
+import { number } from '@hapi/joi';
 
 class AnimesService {
   constructor() {
@@ -6,10 +7,44 @@ class AnimesService {
     this.mongoDB = new MongoLib();
   }
 
-  async getAnimes({ tags }) {
-    const query = tags && { tags: { $in: tags } };
+  animesWeek(animes) {
+    let week = {};
+    if (animes.length > 0) {
+      for (const anime of animes) {
+        if (anime.status !== 'Finalizado') {
+          if (!week.hasOwnProperty(anime.premiere)) {
+            week[anime.premiere] = [];
+          }
+          week[anime.premiere].push(anime);
+        } else {
+          if (!week.hasOwnProperty('Finalizados')) {
+            week['Finalizados'] = [];
+          }
+          week['Finalizados'].push(anime);
+        }
+      }
+    }
+    return week;
+  }
 
-    const animes = await this.mongoDB.getAll(this.collection, query);
+  async getAnimes({ tags, order, week, status }) {
+    var query = {};
+    if (tags && status) {
+      query = { tags: { $in: tags }, status: Number(status) };
+    } else if (status) {
+      query = { status: Number(status) };
+    } else if (tags) {
+      query = { tags: { $in: tags } };
+    }
+
+    const orderBy = JSON.parse(order);
+
+    const animes = await this.mongoDB.getAll(this.collection, query, orderBy);
+
+    if (week) {
+      const result = this.animesWeek(animes);
+      return result;
+    }
     return animes || [];
   }
 

@@ -4,7 +4,7 @@ import moment from 'moment';
 import ms from 'ms';
 
 import config from '../../config/index';
-
+import ApiKeysService from '../../services/apiKeys';
 // refresh token list to manage the xsrf token
 const refreshTokens = {};
 
@@ -14,6 +14,8 @@ const cookieOptions = {
   secure: !config.dev,
   signed: true,
 };
+
+const apiKeysService = new ApiKeysService();
 
 const generateToken = (payload) => {
   const buffer = crypto.randomBytes(32);

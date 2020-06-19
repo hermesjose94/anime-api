@@ -15,6 +15,7 @@ import {
   generateRefreshToken,
   clearTokens,
   handleResponse,
+  verifyToken,
 } from '../utils/auth/auth';
 
 import '../utils/auth/strategies/basic';
@@ -98,6 +99,7 @@ function authApi(app) {
 
     // verify xsrf token
     const xsrfToken = req.headers['x-xsrf-token'];
+
     if (
       !xsrfToken ||
       !(refreshToken in refreshTokens) ||
@@ -106,15 +108,24 @@ function authApi(app) {
       return handleResponse(req, res, 401);
     }
 
-    // verify refresh token
-    verifyToken(refreshToken, '', async (err, payload) => {
-      if (err) {
-        return handleResponse(req, res, 401);
-      } else {
-        const user = await usersService.getUserEmail({ payload });
+    verifyToken(refreshToken, '', async (err, decoded) => {
+      if (!err) {
+        const user = await usersService.getUserEmail(decoded);
 
         if (!user) {
           return handleResponse(req, res, 401);
+        }
+
+        const apiKeyToken = user.isAdmin
+          ? config.adminApiKeyToken
+          : config.publicApiKeyToken;
+
+        const apiKey = await apiKeysService.getApiKey({
+          token: apiKeyToken,
+        });
+
+        if (!apiKey) {
+          next(boom.unauthorized());
         }
 
         const { _id: id, name, email } = user;
@@ -126,19 +137,21 @@ function authApi(app) {
           scopes: apiKey.scopes,
         };
 
-        // generate access token
-        const tokenObj = generateToken(payload);
+        // // generate access token
+        const tokenObj = generateToken({ payload });
 
-        // refresh token list to manage the xsrf token
+        // // refresh token list to manage the xsrf token
         refreshTokens[refreshToken] = tokenObj.xsrfToken;
         res.cookie('XSRF-TOKEN', tokenObj.xsrfToken);
 
-        // return the token along with user details
+        // // return the token along with user details
         return handleResponse(req, res, 200, {
           user: { id, name, email },
           token: tokenObj.token,
           expiredAt: tokenObj.expiredAt,
         });
+      } else {
+        return handleResponse(req, res, 401);
       }
     });
   });
