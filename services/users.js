@@ -44,7 +44,7 @@ class UsersService {
 
   async updateUser({ userId, user }) {
     if (user.password) {
-      const hashedPassword = await bcrypt.hash(password, 10);
+      const hashedPassword = await bcrypt.hash(user.password, 10);
       user.password = hashedPassword;
     }
     const updatedUserId = await this.mongoDB.update(

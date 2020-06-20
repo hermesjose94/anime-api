@@ -24,8 +24,8 @@ const AnimesApi = (app) => {
 
   router.get(
     '/',
-    authMiddleware,
-    scopesValidationHandler(['read:animes']),
+    // authMiddleware,
+    // scopesValidationHandler(['read:animes']),
     async (req, res, next) => {
       cacheResponse(res, FIVE_MINUTES_IN_SECONDS);
       const { tags, order, week, status } = req.query;
@@ -50,8 +50,6 @@ const AnimesApi = (app) => {
 
   router.get(
     '/:animeId',
-    authMiddleware,
-    scopesValidationHandler(['read:animes']),
     validationHandler(animeIdSchema, 'params'),
     async (req, res, next) => {
       cacheResponse(res, SIXTY_MINUTES_IN_SECONDS);

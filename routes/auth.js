@@ -51,7 +51,7 @@ function authApi(app) {
             next(boom.unauthorized());
           }
 
-          const { _id: id, name, email } = user;
+          const { _id: id, name, email, isAdmin } = user;
 
           const payload = {
             sub: id,
@@ -74,7 +74,7 @@ function authApi(app) {
           res.cookie('XSRF-TOKEN', tokenObj.xsrfToken);
 
           return res.status(200).json({
-            user: { id, name, email },
+            user: { id, name, email, isAdmin },
             token: tokenObj.token,
             expiredAt: tokenObj.expiredAt,
           });
@@ -128,7 +128,7 @@ function authApi(app) {
           next(boom.unauthorized());
         }
 
-        const { _id: id, name, email } = user;
+        const { _id: id, name, email, isAdmin } = user;
 
         const payload = {
           sub: id,
@@ -146,7 +146,7 @@ function authApi(app) {
 
         // // return the token along with user details
         return handleResponse(req, res, 200, {
-          user: { id, name, email },
+          user: { id, name, email, isAdmin },
           token: tokenObj.token,
           expiredAt: tokenObj.expiredAt,
         });

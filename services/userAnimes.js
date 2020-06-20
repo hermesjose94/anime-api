@@ -9,62 +9,56 @@ class UserAnimesService {
   }
 
   async getUserAnimes({ userId, tags, order, week, status }) {
-    var query2 = {};
-    if (tags && status) {
-      query2 = { tags: { $in: tags }, status: Number(status) };
-    } else if (status) {
-      query2 = { status: Number(status) };
-    } else if (tags) {
-      query2 = { tags: { $in: tags } };
-    }
-    const query = userId && { ...query2, userId };
+    const query = userId && { userId };
+    const userAnimes = await this.mongoDB.getAll(this.collection, query);
+    var animes = [];
     var orderBy = {};
     if (order) {
       orderBy = JSON.parse(order);
     }
-    const userAnimes = await this.mongoDB.getAll(
-      this.collection,
-      query,
-      orderBy
-    );
 
-    var animes = [];
+    const animesAll = await animesService.getAnimes({
+      tags,
+      order,
+      status,
+    });
 
-    for (const item of userAnimes) {
-      const { animeId } = item;
-      const anime = await animesService.getAnime({ animeId });
-      const {
-        _id: id,
-        name,
-        episode,
-        data,
-        station,
-        cover,
-        description,
-        source,
-        status,
-        season,
-        premiere,
-      } = anime;
+    if (animesAll.length > 0) {
+      for (const item of userAnimes) {
+        var animeList = animesAll.find((anime) => anime._id == item.animeId);
+        if (animeList) {
+          const {
+            _id,
+            name,
+            episode,
+            station,
+            cover,
+            description,
+            source,
+            status,
+            season,
+            premiere,
+          } = animeList;
 
-      const { _id: id_follow, episode: episode_follow } = item;
+          const { _id: id_follow, episode: episode_follow } = item;
 
-      const result = {
-        id,
-        id_follow,
-        name,
-        episode,
-        episode_follow,
-        data,
-        station,
-        cover,
-        description,
-        source,
-        status,
-        season,
-        premiere,
-      };
-      animes.push(result);
+          const result = {
+            _id,
+            id_follow,
+            name,
+            episode,
+            episode_follow,
+            station,
+            cover,
+            description,
+            source,
+            status,
+            season,
+            premiere,
+          };
+          animes.push(result);
+        }
+      }
     }
     if (week) {
       const result = animesService.animesWeek(animes);
@@ -129,7 +123,7 @@ class UserAnimesService {
 
       return createdUserAnimeId;
     } else {
-      return 'anime has this on your list';
+      return null;
     }
   }
 

@@ -81,10 +81,14 @@ function userAnimesApi(app) {
         const createdUserAnimeId = await userAnimesService.createUserAnime({
           userAnime,
         });
+        const message =
+          createdUserAnimeId != null
+            ? 'user anime created'
+            : 'anime has this on your list';
 
         res.status(201).json({
           data: createdUserAnimeId,
-          message: 'user anime created',
+          message,
         });
       } catch (err) {
         next(err);
