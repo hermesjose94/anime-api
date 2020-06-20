@@ -1,5 +1,4 @@
 import MongoLib from '../lib/mongo';
-import { number } from '@hapi/joi';
 
 class AnimesService {
   constructor() {
@@ -11,16 +10,16 @@ class AnimesService {
     let week = {};
     if (animes.length > 0) {
       for (const anime of animes) {
-        if (anime.status !== 'Finalizado') {
+        if (anime.status !== 3) {
           if (!week.hasOwnProperty(anime.premiere)) {
             week[anime.premiere] = [];
           }
           week[anime.premiere].push(anime);
         } else {
-          if (!week.hasOwnProperty('Finalizados')) {
-            week['Finalizados'] = [];
+          if (!week.hasOwnProperty(8)) {
+            week[8] = [];
           }
-          week['Finalizados'].push(anime);
+          week[8].push(anime);
         }
       }
     }
