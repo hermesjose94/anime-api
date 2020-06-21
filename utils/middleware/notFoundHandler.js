@@ -1,4 +1,4 @@
-import boom from '@hapi/boom';
+const boom = require('@hapi/boom');
 
 function notFoundHandler(req, res) {
   const {
@@ -8,4 +8,4 @@ function notFoundHandler(req, res) {
   res.status(statusCode).json(payload);
 }
 
-export default notFoundHandler;
+module.exports = notFoundHandler;

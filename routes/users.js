@@ -1,20 +1,20 @@
 //Librerias instaladas
-import express from 'express';
+const express = require('express');
 //Librerias propias
-import UsersService from '../services/users';
-import validationHandler from '../utils/middleware/validationHandler';
-import scopesValidationHandler from '../utils/middleware/scopesValidationHandler';
-import cacheResponse from '../utils/cacheResponse';
-import {
+const UsersService = require('../services/users');
+const validationHandler = require('../utils/middleware/validationHandler');
+const scopesValidationHandler = require('../utils/middleware/scopesValidationHandler');
+const cacheResponse = require('../utils/cacheResponse');
+const {
   userIdSchema,
   createUserSchema,
   updateUserSchema,
-} from '../utils/schemas/user';
-import {
+} = require('../utils/schemas/user');
+const {
   FIVE_MINUTES_IN_SECONDS,
   SIXTY_MINUTES_IN_SECONDS,
-} from '../utils/time';
-import authMiddleware from '../utils/middleware/authMiddleware';
+} = require('../utils/time');
+const authMiddleware = require('../utils/middleware/authMiddleware');
 
 const UsersApi = (app) => {
   const router = express.Router();
@@ -181,4 +181,4 @@ const UsersApi = (app) => {
   );
 };
 
-export default UsersApi;
+module.exports = UsersApi;

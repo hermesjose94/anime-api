@@ -18,4 +18,8 @@ const updateUserAnimeSchema = joi.object({
   episode: joi.number().min(1).max(10000).required(),
 });
 
-export { userAnimeIdSchema, createUserAnimeSchema, updateUserAnimeSchema };
+module.exports = {
+  userAnimeIdSchema,
+  createUserAnimeSchema,
+  updateUserAnimeSchema,
+};

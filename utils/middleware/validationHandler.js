@@ -1,4 +1,4 @@
-import boom from '@hapi/boom';
+const boom = require('@hapi/boom');
 
 function validate(data, schema) {
   const { error } = schema.validate(data);
@@ -13,4 +13,4 @@ function validationHandler(schema, check = 'body') {
   };
 }
 
-export default validationHandler;
+module.exports = validationHandler;

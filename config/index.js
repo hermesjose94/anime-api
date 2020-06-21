@@ -18,4 +18,4 @@ const config = {
   adminApiKeyToken: process.env.ADMIN_API_KEY_TOKEN,
 };
 
-export default config;
+module.exports = config;

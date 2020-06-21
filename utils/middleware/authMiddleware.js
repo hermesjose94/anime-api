@@ -1,4 +1,4 @@
-import { refreshTokens, verifyToken, handleResponse } from '../auth/auth';
+const { refreshTokens, verifyToken, handleResponse } = require('../auth/auth');
 
 // middleware that checks if JWT token exists and verifies it if it does exist.
 // In all private routes, this helps to know if the request is authenticated or not.
@@ -39,4 +39,4 @@ function authMiddleware(req, res, next) {
   });
 }
 
-export default authMiddleware;
+module.exports = authMiddleware;

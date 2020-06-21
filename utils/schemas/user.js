@@ -26,4 +26,4 @@ const updateUserSchema = joi.object({
   isAdmin: isAdmin,
 });
 
-export { userIdSchema, createUserSchema, updateUserSchema };
+module.exports = { userIdSchema, createUserSchema, updateUserSchema };

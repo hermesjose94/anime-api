@@ -1,5 +1,5 @@
-import MongoLib from '../lib/mongo';
-import AnimesService from './animes';
+const MongoLib = require('../lib/mongo');
+const AnimesService = require('./animes');
 const animesService = new AnimesService();
 
 class UserAnimesService {
@@ -158,4 +158,4 @@ class UserAnimesService {
   }
 }
 
-export default UserAnimesService;
+module.exports = UserAnimesService;

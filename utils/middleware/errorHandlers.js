@@ -1,5 +1,5 @@
-import boom from '@hapi/boom';
-import config from '../../config/index';
+const boom = require('@hapi/boom');
+const config = require('../../config/index');
 
 function withErrorStack(error, stack) {
   if (config.dev) {
@@ -30,4 +30,4 @@ function errorHandler(err, req, res, next) {
   res.json(withErrorStack(payload, err.stack));
 }
 
-export { logErrors, wrapErrors, errorHandler };
+module.exports = { logErrors, wrapErrors, errorHandler };

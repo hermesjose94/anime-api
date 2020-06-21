@@ -1,14 +1,14 @@
 //Librerias instaladas
-import express from 'express';
-import passport from 'passport';
-import boom from '@hapi/boom';
+const express = require('express');
+const passport = require('passport');
+const boom = require('@hapi/boom');
 //Librerias propias
-import ApiKeysService from '../services/apiKeys';
-import UsersService from '../services/users';
-import validationHandler from '../utils/middleware/validationHandler';
-import { createUserSchema } from '../utils/schemas/user';
-import config from '../config/index';
-import {
+const ApiKeysService = require('../services/apiKeys');
+const UsersService = require('../services/users');
+const validationHandler = require('../utils/middleware/validationHandler');
+const { createUserSchema } = require('../utils/schemas/user');
+const config = require('../config/index');
+const {
   refreshTokens,
   cookieOptions,
   generateToken,
@@ -16,9 +16,9 @@ import {
   clearTokens,
   handleResponse,
   verifyToken,
-} from '../utils/auth/auth';
+} = require('../utils/auth/auth');
 
-import '../utils/auth/strategies/basic';
+require('../utils/auth/strategies/basic');
 
 function authApi(app) {
   const router = express.Router();
@@ -187,4 +187,4 @@ function authApi(app) {
   });
 }
 
-export default authApi;
+module.exports = authApi;

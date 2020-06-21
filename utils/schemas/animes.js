@@ -47,4 +47,4 @@ const updateAnimeSchema = joi.object({
   tags: tagsSchema,
 });
 
-export { animeIdSchema, createAnimeSchema, updateAnimeSchema };
+module.exports = { animeIdSchema, createAnimeSchema, updateAnimeSchema };

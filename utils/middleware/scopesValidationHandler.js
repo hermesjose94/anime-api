@@ -1,4 +1,4 @@
-import boom from '@hapi/boom';
+const boom = require('@hapi/boom');
 
 function scopesValidationHandler(allowedScopes) {
   return function (req, res, next) {
@@ -22,4 +22,4 @@ function scopesValidationHandler(allowedScopes) {
   };
 }
 
-export default scopesValidationHandler;
+module.exports = scopesValidationHandler;

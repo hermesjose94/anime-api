@@ -1,18 +1,10 @@
 // DEBUG=app:* node scripts/mongo/seedUsers.js
 
-require('@babel/register')({
-  presets: ['@babel/preset-env'],
-});
-
-require('@babel/polyfill');
-
 const bcrypt = require('bcrypt');
 const chalk = require('chalk');
 const debug = require('debug')('app:scripts:users');
-const mongoLib = require('../../lib/mongo');
-const MongoLib = mongoLib.default;
-const Config = require('../../config/index');
-const config = Config.default;
+const MongoLib = require('../../lib/mongo');
+const config = require('../../config/index');
 
 const users = [
   {

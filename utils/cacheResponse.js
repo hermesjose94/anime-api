@@ -1,4 +1,4 @@
-import config from '../config/index';
+const config = require('../config/index');
 
 function cacheResponse(res, seconds) {
   if (!config.dev) {
@@ -6,4 +6,4 @@ function cacheResponse(res, seconds) {
   }
 }
 
-export default cacheResponse;
+module.exports = cacheResponse;

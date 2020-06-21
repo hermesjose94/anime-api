@@ -1,4 +1,4 @@
-import MongoLib from '../lib/mongo';
+const MongoLib = require('../lib/mongo');
 
 class ApiKeysService {
   constructor() {
@@ -12,4 +12,4 @@ class ApiKeysService {
   }
 }
 
-export default ApiKeysService;
+module.exports = ApiKeysService;

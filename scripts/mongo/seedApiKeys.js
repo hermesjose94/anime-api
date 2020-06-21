@@ -1,16 +1,8 @@
 // DEBUG=app:* node scripts/mongo/seedApiKeys.js
-
-require('@babel/register')({
-  presets: ['@babel/preset-env'],
-});
-
-require('@babel/polyfill');
-
 const chalk = require('chalk');
 const crypto = require('crypto');
 const debug = require('debug')('app:scripts:api-keys');
-const mongoLib = require('../../lib/mongo');
-const MongoLib = mongoLib.default;
+const MongoLib = require('../../lib/mongo');
 
 const adminScopes = [
   'signin:auth',

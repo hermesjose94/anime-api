@@ -1,5 +1,5 @@
-import MongoLib from '../lib/mongo';
-import bcrypt from 'bcrypt';
+const MongoLib = require('../lib/mongo');
+const bcrypt = require('bcrypt');
 
 class UsersService {
   constructor() {
@@ -70,4 +70,4 @@ class UsersService {
   }
 }
 
-export default UsersService;
+module.exports = UsersService;

@@ -1,19 +1,19 @@
 //Librerias instaladas
-import express from 'express';
-import cors from 'cors';
-import cookieParser from 'cookie-parser';
+const express = require('express');
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
 //Librerias propias
-import authApi from './routes/auth';
-import animesApi from './routes/animes';
-import usersApi from './routes/users';
-import userAnimesApi from './routes/userAnimes';
-import config from './config/index';
-import {
+const authApi = require('./routes/auth');
+const animesApi = require('./routes/animes');
+const usersApi = require('./routes/users');
+const userAnimesApi = require('./routes/userAnimes');
+const config = require('./config/index');
+const {
   logErrors,
   wrapErrors,
   errorHandler,
-} from './utils/middleware/errorHandlers';
-import notFoundHandler from './utils/middleware/notFoundHandler';
+} = require('./utils/middleware/errorHandlers');
+const notFoundHandler = require('./utils/middleware/notFoundHandler');
 
 const app = express();
 

@@ -1,10 +1,10 @@
-import jwt from 'jsonwebtoken';
-import crypto from 'crypto';
-import moment from 'moment';
-import ms from 'ms';
+const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
+const moment = require('moment');
+const ms = require('ms');
 
-import config from '../../config/index';
-import ApiKeysService from '../../services/apiKeys';
+const config = require('../../config/index');
+const ApiKeysService = require('../../services/apiKeys');
 // refresh token list to manage the xsrf token
 const refreshTokens = {};
 
@@ -92,7 +92,7 @@ const handleResponse = (req, res, statusCode, data, message) => {
   return res.status(statusCode).json(resObj);
 };
 
-export {
+module.exports = {
   refreshTokens,
   cookieOptions,
   generateToken,

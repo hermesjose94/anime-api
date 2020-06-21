@@ -1,17 +1,17 @@
 //Librerias instaladas
-import express from 'express';
+const express = require('express');
 //Librerias propias
-import UserAnimesService from '../services/userAnimes';
-import validationHandler from '../utils/middleware/validationHandler';
-import scopesValidationHandler from '../utils/middleware/scopesValidationHandler';
-import { userIdSchema } from '../utils/schemas/user';
-import {
+const UserAnimesService = require('../services/userAnimes');
+const validationHandler = require('../utils/middleware/validationHandler');
+const scopesValidationHandler = require('../utils/middleware/scopesValidationHandler');
+const { userIdSchema } = require('../utils/schemas/user');
+const {
   userAnimeIdSchema,
   createUserAnimeSchema,
   updateUserAnimeSchema,
-} from '../utils/schemas/userAnimes';
+} = require('../utils/schemas/userAnimes');
 //JWT strategies
-import authMiddleware from '../utils/middleware/authMiddleware';
+const authMiddleware = require('../utils/middleware/authMiddleware');
 
 function userAnimesApi(app) {
   const router = express.Router();
@@ -145,4 +145,4 @@ function userAnimesApi(app) {
   );
 }
 
-export default userAnimesApi;
+module.exports = userAnimesApi;

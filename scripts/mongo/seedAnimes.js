@@ -1,14 +1,7 @@
 // DEBUG=app:* node scripts/mongo/seedAnimes.js
-require('@babel/register')({
-  presets: ['@babel/preset-env'],
-});
-
-require('@babel/polyfill');
-
 const chalk = require('chalk');
 const debug = require('debug')('app:scripts:movies');
-const mongoLib = require('../../lib/mongo');
-const MongoLib = mongoLib.default;
+const MongoLib = require('../../lib/mongo');
 const Animes = require('../../utils/mocks/animes');
 const AnimesMock = Animes.default;
 

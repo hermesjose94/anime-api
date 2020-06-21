@@ -1,20 +1,20 @@
 //Librerias instaladas
-import express from 'express';
+const express = require('express');
 //Librerias propias
-import AnimeService from '../services/animes';
-import validationHandler from '../utils/middleware/validationHandler';
-import scopesValidationHandler from '../utils/middleware/scopesValidationHandler';
-import cacheResponse from '../utils/cacheResponse';
-import {
+const AnimeService = require('../services/animes');
+const validationHandler = require('../utils/middleware/validationHandler');
+const scopesValidationHandler = require('../utils/middleware/scopesValidationHandler');
+const cacheResponse = require('../utils/cacheResponse');
+const {
   animeIdSchema,
   createAnimeSchema,
   updateAnimeSchema,
-} from '../utils/schemas/animes';
-import {
+} = require('../utils/schemas/animes');
+const {
   FIVE_MINUTES_IN_SECONDS,
   SIXTY_MINUTES_IN_SECONDS,
-} from '../utils/time';
-import authMiddleware from '../utils/middleware/authMiddleware';
+} = require('../utils/time');
+const authMiddleware = require('../utils/middleware/authMiddleware');
 
 const AnimesApi = (app) => {
   const router = express.Router();
@@ -133,4 +133,4 @@ const AnimesApi = (app) => {
   );
 };
 
-export default AnimesApi;
+module.exports = AnimesApi;
