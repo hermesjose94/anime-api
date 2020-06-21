@@ -74,7 +74,7 @@ class UserAnimesService {
     const anime = await animesService.getAnime({ animeId });
 
     const {
-      _id: id,
+      _id,
       name,
       episode,
       data,
@@ -87,10 +87,19 @@ class UserAnimesService {
       premiere,
     } = anime;
 
-    const { _id: id_follow, episode: episode_follow } = userAnimes;
+    var id_follow;
+    var episode_follow;
+
+    if (userAnimes) {
+      id_follow = userAnimes._id;
+      episode_follow = userAnimes.episode;
+    } else {
+      id_follow = null;
+      episode_follow = null;
+    }
 
     const result = {
-      id,
+      _id,
       id_follow,
       name,
       episode,

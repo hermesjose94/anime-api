@@ -52,7 +52,7 @@ class AnimesService {
   async getAnime({ animeId }) {
     const anime = await this.mongoDB.get(this.collection, animeId);
 
-    return anime || {};
+    return { ...anime, episode_follow: null, id_follow: null } || {};
   }
 
   async createAnime({ anime }) {

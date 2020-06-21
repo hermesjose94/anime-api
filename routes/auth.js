@@ -138,7 +138,7 @@ function authApi(app) {
         };
 
         // // generate access token
-        const tokenObj = generateToken({ payload });
+        const tokenObj = generateToken(payload);
 
         // // refresh token list to manage the xsrf token
         refreshTokens[refreshToken] = tokenObj.xsrfToken;
