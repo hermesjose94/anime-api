@@ -19,16 +19,13 @@ const app = express();
 
 // enable CORS
 app.use(
-  cors(
-    {
-      origin: 'http://localhost:3000', // url of the frontend application
-      credentials: true, // set credentials true for secure httpOnly cookie
-    },
-    {
-      origin: 'https://hermesjose94-animes.herokuapp.com/', // url of the frontend application
-      credentials: true, // set credentials true for secure httpOnly cookie
-    }
-  )
+  cors({
+    origin: [
+      'http://localhost:3000',
+      'https://hermesjose94-animes.herokuapp.com',
+    ], // url of the frontend application
+    credentials: true, // set credentials true for secure httpOnly cookie
+  })
 );
 // parse application/json
 app.use(express.json());
