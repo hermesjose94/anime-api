@@ -18,12 +18,10 @@ const notFoundHandler = require('./utils/middleware/notFoundHandler');
 const app = express();
 
 // enable CORS
+//  'https://hermesjose94-animes.herokuapp.com',
 app.use(
   cors({
-    origin: [
-      'http://localhost:3000',
-      'https://hermesjose94-animes.herokuapp.com',
-    ], // url of the frontend application
+    origin: 'http://localhost:3000', // url of the frontend application
     credentials: true, // set credentials true for secure httpOnly cookie
   })
 );
