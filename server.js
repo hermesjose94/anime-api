@@ -18,7 +18,7 @@ const notFoundHandler = require('./utils/middleware/notFoundHandler');
 const app = express();
 
 // enable CORS
-//  'https://hermesjose94-animes.herokuapp.com',
+// 'https://hermesjose94-animes.herokuapp.com',
 app.use(cors({ credentials: true, origin: true }));
 // parse application/json
 app.use(express.json());
